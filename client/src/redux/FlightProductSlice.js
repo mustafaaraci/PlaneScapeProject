@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 
 
-
+//verimizi burada çekiyoruz
 export const getAllFlights = createAsyncThunk("flights/getAllFlights", async () => {
     try {
         const response = await axios.get(import.meta.env.VITE_API_URL, {
@@ -19,6 +19,8 @@ export const getAllFlights = createAsyncThunk("flights/getAllFlights", async () 
         throw error; 
     }
 });
+
+
 
 //burada slice oluşturduk
 export const FlightProductSlice = createSlice({

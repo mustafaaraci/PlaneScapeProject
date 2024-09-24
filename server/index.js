@@ -10,15 +10,9 @@ app.use(express.json());
 app.use(cors());
 
 
+//route
+app.use("/api/flights",flightRoute);
 
-app.use("api/flights",flightRoute);
-
-
-app.get("/",(req,res)=>{
-    res.json({
-        message:"HOŞGELDİNİZ"
-    })
-})
 
 
 
