@@ -1,0 +1,107 @@
+.logo-container {
+   display:flex;
+    background-color: purple; 
+    border-radius: 50%; 
+    width: 45px; 
+    height: 45px;
+    display: flex; 
+    align-items:center; 
+    justify-content:center;
+    margin-right: 10px;
+  
+}
+
+.logo-container:hover{
+    background-color:rgb(99, 7, 99);
+    
+   
+}
+
+
+.logo-flight {
+    color:rgb(231, 224, 224);
+    transform: rotate(90deg);
+    width: 45px;
+    height: 45px;
+    margin-left:-12px;
+    margin-top: 2px;
+    
+}
+
+.logo-flight:hover{
+    transform: translateX(20px); 
+    transition: transform 0.5s ease; 
+    transform: rotate(60deg);
+    
+}
+
+.navbar{
+    border-radius: 15px;
+    background-color: rgb(231, 224, 224);
+    margin-top:10px;
+    
+}
+
+
+.navbar-brand {
+    display: flex;
+    align-items: center; 
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center; 
+
+}
+
+
+.nav-link:hover {
+   
+    background-color:rgb(197, 182, 207); 
+    border-radius:7px; 
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-weight: bold;
+   
+}
+
+
+.icon-deals{
+    transform: rotate(60deg);  
+}
+
+.icon-deals, .icon-discover,.icon-myflight {
+    font-size: 24px; 
+    color:purple; 
+    margin-right: 4px; 
+}
+
+.icon-deals:hover, .icon-discover:hover,.icon-myflight:hover {
+    color: rgb(99, 7, 99); 
+   
+}
+
+.nav-item {
+    display: flex; 
+    align-items: center;
+}
+
+.user-photo {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    overflow: hidden;
+    border: 2px solid purple;
+    margin-right: 4px;
+}
+
+.user-photo:hover{
+border-color: rgb(99, 7, 99) ;
+transition: border-color 0.3s ease; 
+}
+
+.user-photo img {
+    width: 100%; 
+    height: auto; 
+}
