@@ -1,24 +1,22 @@
-const express = require("express")
-const cors = require("cors")
+const express = require("express");
+const cors = require("cors");
 const app = express();
-require('./db');
-const port = process.env.VITE_PORT ||  5001
+require("./db");
+const port = process.env.VITE_PORT || 5001;
 const flightRoute = require("./routes/flightRoute");
 
-//middleware
+//middlewares
 app.use(express.json());
 app.use(cors());
+//bodyparser gelen verileri ayrıştırmak için kullanıyoruz
+app.use(express.urlencoded({ extended: true }));
 
-
-//route
-app.use("/api/flights",flightRoute);
-
-
-
+app.use("/api/flights", flightRoute);
 
 //serverı ayağa kaldırıyoruz
 
-app.listen(port,()=>{
-    console.log(`PLANE SCAPE SERVERI ${port} PORTUNDA BAŞARIYLA AYAĞA KALMAKTADIR. 🔥🔥🔥`);
-    
-})
+app.listen(port, () => {
+  console.log(
+    `PLANE SCAPE SERVERI ${port} PORTUNDA BAŞARIYLA AYAĞA KALMAKTADIR. 🔥🔥🔥`
+  );
+});

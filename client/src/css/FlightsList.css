@@ -1,0 +1,107 @@
+/* Flights container-Card başlangıç */
+
+.flights-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.flight-container {
+  flex: 0 0 97%;
+  margin: 10px;
+  box-shadow: 0 1px 5px rgb(148, 102, 148);
+  border-radius: 10px;
+  background-color: white;
+  padding: 1px;
+  position: relative;
+}
+
+.flight-card {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flight-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.left-info,
+.center-info,
+.right-info {
+  text-align: center;
+}
+
+.details-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.details-button:hover {
+  background-color: darkviolet;
+}
+
+.flight-duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flight-duration::before,
+.flight-duration::after {
+  content: "";
+  flex: 1;
+  border-top: 2px solid black;
+  margin: 0 10px;
+}
+
+.departure-info,
+.arrival-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.departure-info p,
+.arrival-info p {
+  margin: 0;
+}
+
+.icon-departure,
+.icon-arrival {
+  color: purple;
+}
+
+.icon-info {
+  transform: rotate(90deg);
+  width: 25px;
+  height: 25px;
+  color: purple;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(148, 102, 148, 0.5);
+  border-radius: 10px;
+}

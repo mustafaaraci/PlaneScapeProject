@@ -1,0 +1,62 @@
+.hero-content-1 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.flight-container-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.flight-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.flight-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flight-detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.flight-detail span {
+  font-weight: bold;
+  color: #333;
+}
+
+.flight-detail p {
+  margin: 0;
+  color: #555;
+}
+
+.icon-planeslash {
+  font-size: 24px;
+  color: purple;
+  margin-right: 4px;
+}

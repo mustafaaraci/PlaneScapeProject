@@ -1,92 +1,89 @@
+/* responsive ayarları */
+@media (max-width: 768px) {
+  .flight-container {
+    flex: 0 0 calc(100% - 20px);
+  }
+
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-containers {
+    flex: 0 0 100%;
+  }
+
+  .container-item {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .flight-container {
+    margin: 5px;
+  }
+
+  .container-item {
+    height: 120px;
+  }
+}
+
+/* herosectıon baslangıc */
 .hero-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px;
-    background-color: rgb(231, 224, 224);
-    border-radius: 15px;
-    margin-top: 20px;
-    box-shadow: 0 20px 20px rgba(128, 0, 128, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(231, 224, 224);
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 20px 20px rgba(128, 0, 128, 0.5);
 }
 
 .hero-content {
-    flex: 1;
+  flex: 1;
+  justify-content: center;
 }
 
 .hero-containers {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 0 0 200px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 0 0 200px;
 }
 
 .container-item {
-    position: relative;
-    width: 200px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .container-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .container-item h2 {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 5px;
-    font-size: medium;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .container-item:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-
-/* flights container baslangic */
-
-.flight-container {
-    padding: 10px;
-    background-color: rgb(231, 224, 224);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-    margin-bottom: 15px;
-}
-
-.flight-card {
-    border-radius: 10px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.flight-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.flight-detail {
-    flex: 1;
-    text-align: center;
-}
-
-.flight-detail span {
-    font-weight: bold;
-}
-
-.flight-detail p {
-    margin: 5px 0;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
