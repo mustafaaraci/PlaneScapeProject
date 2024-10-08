@@ -1,0 +1,44 @@
+.flight-details-additional {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.flight-details-additional h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.flight-details-additional ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flight-details-additional ul li {
+  font-size: 14px;
+}
+
+.flight-details-additional ul li:before {
+  content: "• ";
+  color: purple;
+  font-size: 20px;
+}
+
+.info-dynamic {
+  font-weight: bold;
+}
+
+.button-buy {
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.button-buy:hover {
+  background-color: darkviolet;
+}
