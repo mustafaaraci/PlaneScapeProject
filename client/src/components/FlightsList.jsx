@@ -5,14 +5,22 @@ import { FaPlaneDeparture, FaPlaneArrival } from "react-icons/fa";
 import { MdFlight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import { resetFilteredFlights } from "../redux/FlightProductSlice";
 
 const FlightsList = () => {
   const dispatch = useDispatch();
-  const { Flights, loading, error } = useSelector((state) => state.flights);
+  const { Flights, filteredFlights, loading, error } = useSelector(
+    (state) => state.flights
+  );
 
   useEffect(() => {
     dispatch(getAllFlights());
+    dispatch(resetFilteredFlights());
   }, [dispatch]);
+
+  // Filtrelenmiş uçuşları göster
+  const displayedFlights =
+    filteredFlights.length > 0 ? filteredFlights : Flights;
 
   return (
     <div className="flights-list">
@@ -21,16 +29,16 @@ const FlightsList = () => {
           <Spinner animation="border" style={{ color: "purple" }} />
         </div>
       ) : error ? (
-        <p>Server bağlantısı yapılmadı!!!</p>
+        <p>Hata: {error}</p>
       ) : !Array.isArray(Flights) || Flights.length === 0 ? (
         <p>Uçuş verileri bulunamadı.</p>
       ) : (
-        Flights.map((flight) => (
+        displayedFlights.map((flight) => (
           <div className="flight-container" key={flight.id}>
             <div className="flight-card">
               <div className="flight-info">
                 <div className="left-info">
-                  <h4>{flight.route.destinations[0]}</h4>
+                  <h4>{flight.prefixIATA}</h4>
                   <div className="departure-info">
                     <FaPlaneDeparture className="icon-departure" />
                     <p>Departure</p>
@@ -55,7 +63,7 @@ const FlightsList = () => {
                 </div>
                 <div className="right-info">
                   <h4>
-                    {flight.route.destinations[1] ||
+                    {flight.route.destinations[0] ||
                       flight.publicFlightState.flightStates[0] ||
                       "Bilinmiyor"}
                   </h4>
@@ -75,7 +83,7 @@ const FlightsList = () => {
                       )}
                     </strong>
                   </p>
-                  <p>Airport: {flight.publicFlightState.flightStates[0]}</p>
+                  <p>Airport: {flight.route.destinations[0]}</p>
                 </div>
               </div>
               <Link

@@ -1,0 +1,114 @@
+.flight-search-container {
+  margin: 10px;
+  box-shadow: 0 1px 5px rgb(148, 102, 148);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.flight-search {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.head-icon {
+  font-size: 22px;
+  transform: rotate(90deg);
+  margin-left: auto;
+  margin-right: 6px;
+}
+
+.flight-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.input-container {
+  display: flex;
+  gap: 5px;
+}
+
+.input-departure,
+.input-arrival {
+  flex: 1;
+  position: relative;
+}
+
+.input-departure .icon,
+.input-arrival .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.input-departure input {
+  padding-left: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px 0 0 20px;
+}
+
+.input-arrival input {
+  padding-left: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 20px 20px 0;
+}
+
+.date-inputs {
+  display: flex;
+  gap: 5px;
+}
+
+.date-left {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px 0 0 20px;
+}
+
+.date-right {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 20px 20px 0;
+}
+
+.input-departure input,
+.input-arrival input,
+.date-left,
+.date-right {
+  padding-left: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid rgba(148, 102, 148, 0.5);
+  outline: none;
+}
+
+.input-departure input:focus,
+.input-arrival input:focus,
+.date-left:focus,
+.date-right:focus {
+  border-color: rgba(148, 102, 148, 1);
+}
+
+.filter-button {
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.filter-button:hover {
+  background-color: darkviolet;
+}
+
+.icon {
+  color: purple;
+}

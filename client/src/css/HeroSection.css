@@ -32,7 +32,6 @@
 .hero-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 10px;
   background-color: rgb(231, 224, 224);
   border-radius: 15px;

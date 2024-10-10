@@ -23,10 +23,18 @@ export const FlightProductSlice = createSlice({
   name: "flights",
   initialState: {
     Flights: [],
+    filteredFlights: [],
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setFilteredFlights: (state, action) => {
+      state.filteredFlights = action.payload;
+    },
+    resetFilteredFlights: (state) => {
+      state.filteredFlights = []; // Filtreleri sıfırlamak için
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllFlights.pending, (state) => {
@@ -43,5 +51,6 @@ export const FlightProductSlice = createSlice({
       });
   },
 });
-
+export const { setFilteredFlights, resetFilteredFlights } =
+  FlightProductSlice.actions;
 export default FlightProductSlice.reducer;
