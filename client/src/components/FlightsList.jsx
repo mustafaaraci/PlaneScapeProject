@@ -29,7 +29,7 @@ const FlightsList = () => {
           <Spinner animation="border" style={{ color: "purple" }} />
         </div>
       ) : error ? (
-        <p>Hata: {error}</p>
+        <p>Lütfen sunucu bağlantınızı kontrol edin!!!</p>
       ) : !Array.isArray(Flights) || Flights.length === 0 ? (
         <p>Uçuş verileri bulunamadı.</p>
       ) : (
