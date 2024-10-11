@@ -31,7 +31,7 @@
 /* herosectıon baslangıc */
 .hero-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px;
   background-color: rgb(231, 224, 224);
   border-radius: 15px;
@@ -46,6 +46,7 @@
 
 .hero-containers {
   margin-top: 10px;
+  margin-right: 8px;
   display: flex;
   flex-direction: column;
   gap: 20px;

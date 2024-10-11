@@ -1,9 +1,10 @@
 .flights-list {
-  justify-content: center;
   display: flex;
+  justify-content: start;
   flex-wrap: wrap;
-  max-height: 360px;
+  max-height: 350px;
   overflow-y: auto;
+  margin-right: 10px;
 }
 
 .flight-container {
