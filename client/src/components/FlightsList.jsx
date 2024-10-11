@@ -29,9 +29,9 @@ const FlightsList = () => {
           <Spinner animation="border" style={{ color: "purple" }} />
         </div>
       ) : error ? (
-        <p>Lütfen sunucu bağlantınızı kontrol edin!!!</p>
+        <p className="loading">Lütfen sunucu bağlantınızı kontrol edin!!!</p>
       ) : !Array.isArray(Flights) || Flights.length === 0 ? (
-        <p>Uçuş verileri bulunamadı.</p>
+        <p className="loading">Uçuş verileri bulunamadı.</p>
       ) : (
         displayedFlights.map((flight) => (
           <div className="flight-container" key={flight.id}>
