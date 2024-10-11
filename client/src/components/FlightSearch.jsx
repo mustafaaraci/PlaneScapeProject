@@ -30,10 +30,11 @@ const FlightSearch = () => {
       const flightReturnDate = flight.scheduleDate;
 
       return (
-        flight.prefixIATA === departureAirport &&
-        flight.route.destinations[0] === arrivalAirport &&
+        flight.prefixIATA.toLowerCase() === departureAirport.toLowerCase() &&
+        flight.route.destinations[0].toLowerCase() ===
+          arrivalAirport.toLowerCase() &&
         flightScheduleDate === departureDate &&
-        flightReturnDate === returnDate
+        flightScheduleDate === returnDate
       );
     });
 
