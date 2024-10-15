@@ -3,30 +3,40 @@
   box-shadow: 0 1px 5px rgb(148, 102, 148);
   border-radius: 10px;
   padding: 10px;
+  height: 135px;
+  overflow: hidden;
 }
 
 .flight-search {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  height: 100%;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .head-icon {
   font-size: 22px;
   transform: rotate(90deg);
-  margin-left: auto;
   margin-right: 6px;
 }
 
 .flight-title {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .input-container {
   display: flex;
   gap: 5px;
+  flex-grow: 1;
 }
 
 .input-departure,
@@ -44,37 +54,6 @@
   pointer-events: none;
 }
 
-.input-departure input {
-  padding-left: 30px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 20px 0 0 20px;
-}
-
-.input-arrival input {
-  padding-left: 30px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 0 20px 20px 0;
-}
-
-.date-inputs {
-  display: flex;
-  gap: 5px;
-}
-
-.date-left {
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 20px 0 0 20px;
-}
-
-.date-right {
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 0 20px 20px 0;
-}
-
 .input-departure input,
 .input-arrival input,
 .date-left,
@@ -84,6 +63,28 @@
   box-sizing: border-box;
   border: 2px solid rgba(148, 102, 148, 0.5);
   outline: none;
+  height: 36px;
+}
+
+.date-inputs {
+  display: flex;
+  gap: 5px;
+}
+
+.input-departure input {
+  border-radius: 20px 0 0 20px;
+}
+
+.input-arrival input {
+  border-radius: 0 20px 20px 0;
+}
+
+.date-left {
+  border-radius: 20px 0 0 20px;
+}
+
+.date-right {
+  border-radius: 0 20px 20px 0;
 }
 
 .input-departure input:focus,
@@ -93,10 +94,16 @@
   border-color: rgba(148, 102, 148, 1);
 }
 
+.input-departure input::placeholder,
+.input-arrival input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
 .filter-button {
   align-self: flex-start;
-  margin-top: 10px;
-  padding: 8px 12px;
+  margin-top: 5px;
+  padding: 6px 10px;
   cursor: pointer;
   background-color: purple;
   color: white;
@@ -110,5 +117,43 @@
 }
 
 .icon {
+  color: purple;
+}
+
+.trip-type-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.trip-button {
+  background: transparent;
+  border: 1px solid purple;
+  padding: 4px 8px;
+  cursor: pointer;
+  height: 28px;
+  color: purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trip-button.round {
+  border-radius: 20px 0 0 20px;
+}
+
+.trip-button.one-way {
+  border-radius: 0 20px 20px 0;
+}
+
+.trip-button.active {
+  background-color: purple;
+  color: white;
+}
+
+.trip-button.round:not(.active),
+.trip-button.one-way:not(.active) {
+  background-color: transparent;
   color: purple;
 }

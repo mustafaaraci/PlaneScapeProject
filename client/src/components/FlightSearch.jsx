@@ -14,10 +14,24 @@ const FlightSearch = () => {
   const [arrivalAirport, setArrivalAirport] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [tripType, setTripType] = useState("round");
 
   const handleFilter = () => {
-    if (!departureAirport || !arrivalAirport || !departureDate || !returnDate) {
+    if (
+      !departureAirport ||
+      !arrivalAirport ||
+      !departureDate ||
+      (tripType === "round" && !returnDate)
+    ) {
       toast.error("Lütfen tüm alanları doldurun.", {
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
+      return;
+    }
+
+    if (departureAirport.toLowerCase() === arrivalAirport.toLowerCase()) {
+      toast.error("Gidiş ve dönüş havaalanları aynı olamaz!", {
         autoClose: 3000,
         pauseOnHover: false,
       });
@@ -26,27 +40,29 @@ const FlightSearch = () => {
 
     const filteredFlights = Flights.filter((flight) => {
       const flightScheduleDate = flight.scheduleDate;
-
-      const flightReturnDate = flight.scheduleDate;
+      const isRoundTrip = tripType === "round";
+      const returnDateMatch = isRoundTrip
+        ? flight.returnScheduleDate === returnDate
+        : true;
 
       return (
         flight.prefixIATA.toLowerCase() === departureAirport.toLowerCase() &&
         flight.route.destinations[0].toLowerCase() ===
           arrivalAirport.toLowerCase() &&
         flightScheduleDate === departureDate &&
-        flightScheduleDate === returnDate
+        returnDateMatch
       );
     });
 
     console.log("Filtrelenmiş Uçuşlar:", filteredFlights);
 
     if (filteredFlights.length === 0) {
-      toast.error("Bu tarihte uçuş yok!", {
+      toast.error("Böyle bir uçuş bulunamadı!", {
         autoClose: 3000,
         pauseOnHover: false,
       });
     } else {
-      toast.success("Uçuş bulundu!", {
+      toast.success(`${filteredFlights.length} adet uçuş bulundu!`, {
         autoClose: 3000,
         pauseOnHover: false,
       });
@@ -59,10 +75,30 @@ const FlightSearch = () => {
     <div className="flight-search-container">
       <ToastContainer />
       <div className="flight-search">
-        <h2 className="flight-title">
-          <MdFlight className="head-icon" />
-          BOOK YOUR FLIGHT
-        </h2>
+        <div className="header-container">
+          <h2 className="flight-title">
+            <MdFlight className="head-icon" />
+            BOOK YOUR FLIGHT
+          </h2>
+          <div className="trip-type-buttons">
+            <button
+              className={`trip-button round ${
+                tripType === "round" ? "active" : ""
+              }`}
+              onClick={() => setTripType("round")}
+            >
+              Round Trip
+            </button>
+            <button
+              className={`trip-button one-way ${
+                tripType === "one-way" ? "active" : ""
+              }`}
+              onClick={() => setTripType("one-way")}
+            >
+              One Way
+            </button>
+          </div>
+        </div>
         <div className="input-container">
           <div className="input-departure">
             <FaPlaneDeparture className="icon" />
@@ -70,6 +106,7 @@ const FlightSearch = () => {
               type="text"
               value={departureAirport}
               onChange={(e) => setDepartureAirport(e.target.value)}
+              placeholder="departure..."
             />
           </div>
           <div className="input-arrival">
@@ -78,6 +115,7 @@ const FlightSearch = () => {
               type="text"
               value={arrivalAirport}
               onChange={(e) => setArrivalAirport(e.target.value)}
+              placeholder="arrival..."
             />
           </div>
           <div className="date-inputs">
@@ -88,13 +126,15 @@ const FlightSearch = () => {
               value={departureDate}
               onChange={(e) => setDepartureDate(e.target.value)}
             />
-            <input
-              className="date-right"
-              type="date"
-              placeholder="Dönüş Tarihi"
-              value={returnDate}
-              onChange={(e) => setReturnDate(e.target.value)}
-            />
+            {tripType === "round" && (
+              <input
+                className="date-right"
+                type="date"
+                placeholder="Dönüş Tarihi"
+                value={returnDate}
+                onChange={(e) => setReturnDate(e.target.value)}
+              />
+            )}
           </div>
         </div>
         <button className="filter-button" onClick={handleFilter}>

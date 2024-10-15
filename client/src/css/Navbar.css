@@ -40,6 +40,7 @@
   align-items: center;
   font-weight: bold;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .nav-link {

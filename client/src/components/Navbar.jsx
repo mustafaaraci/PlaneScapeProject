@@ -30,6 +30,11 @@ const Navbar = () => {
     }
   }, [dispatch]);
 
+  const handleClickRefreshPage = () => {
+    navigate("/"); // Ana sayfaya yönlendir
+    window.location.reload(); // Sayfayı yeniden yükle
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("user"); // Kullanıcı bilgisini temizle
     dispatch(clearUser()); // Redux store'dan kullanıcıyı temizle
@@ -39,12 +44,12 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <div className="navbar-brand" onClick={handleClickRefreshPage}>
           <div className="logo-container">
             <MdFlight className="logo-flight" />
           </div>
           PLANE SCAPE
-        </Link>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
