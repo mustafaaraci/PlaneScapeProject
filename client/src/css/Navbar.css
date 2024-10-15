@@ -66,7 +66,8 @@
 
 .icon-deals,
 .icon-discover,
-.icon-myflight {
+.icon-myflight,
+.icon-logout {
   font-size: 24px;
   color: purple;
   margin-right: 4px;
@@ -74,8 +75,22 @@
 
 .icon-deals:hover,
 .icon-discover:hover,
+.icon-user:hover,
+.icon-logout:hover,
+.icon-currentuser:hover,
 .icon-myflight:hover {
   color: rgb(99, 7, 99);
+}
+
+.icon-user {
+  font-size: 20px;
+  color: purple;
+  margin-right: 4px;
+}
+
+.icon-currentuser {
+  color: purple;
+  font-size: 18px;
 }
 
 .nav-item {
@@ -89,7 +104,10 @@
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid purple;
-  margin-right: 4px;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-photo:hover {
@@ -100,4 +118,8 @@
 .user-photo img {
   width: 100%;
   height: auto;
+}
+
+.current-user-info {
+  cursor: pointer;
 }

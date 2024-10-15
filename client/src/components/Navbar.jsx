@@ -1,12 +1,41 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 import { MdFlight } from "react-icons/md";
 import { MdOutlineAirplaneTicket } from "react-icons/md";
+import { TbLogout2 } from "react-icons/tb";
 import { BiWorld } from "react-icons/bi";
 import { PiAirplaneTakeoffLight } from "react-icons/pi";
+import { FaUserAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, clearUser } from "../redux/UserSlice";
 
 const Navbar = () => {
+  const { currentUser } = useSelector((state) => state.users);
+  // console.log("aldığımız kullanıcı bilgileri", currentUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        dispatch(setUser(JSON.parse(storedUser))); // Kullanıcı bilgilerini yükle
+      } catch (error) {
+        console.error("Kullanıcı bilgileri yüklenirken hata oluştu:", error);
+      }
+    } else {
+      dispatch(clearUser()); // Kullanıcı bilgisi yoksa temizle
+    }
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Kullanıcı bilgisini temizle
+    dispatch(clearUser()); // Redux store'dan kullanıcıyı temizle
+    navigate("/login"); // Giriş sayfasına yönlendir
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
@@ -16,7 +45,6 @@ const Navbar = () => {
           </div>
           PLANE SCAPE
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"
@@ -30,21 +58,25 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+            {currentUser && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "nav-link active" : "nav-link"
+                  }
+                  to="/myflight"
+                >
+                  <PiAirplaneTakeoffLight className="icon-myflight" />
+                  MyFlight
+                </NavLink>
+              </li>
+            )}
             <li className="nav-item">
               <NavLink
-                className="nav-link"
-                to="/myflight"
-                activeClassName="active"
-              >
-                <PiAirplaneTakeoffLight className="icon-myflight" />
-                MyFlight
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
                 to="/deals"
-                activeClassName="active"
               >
                 <MdOutlineAirplaneTicket className="icon-deals" />
                 Deals
@@ -52,23 +84,46 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <NavLink
-                className="nav-link"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
                 to="/discover"
-                activeClassName="active"
               >
                 <BiWorld className="icon-discover" />
                 Discover
               </NavLink>
             </li>
             <li className="nav-item">
-              <div className="user-photo">
-                <Link to="/profile">
-                  <img src="./src/images/user-img-1.jpeg" alt="User" />
-                </Link>
-              </div>
-              <NavLink className="nav-link" to="/profile">
-                Mustafa Aracı
-              </NavLink>
+              {currentUser ? (
+                <>
+                  <div className="user-photo">
+                    <Link to="/profile">
+                      {currentUser.image ? (
+                        <img src={currentUser.image} alt="User" />
+                      ) : (
+                        <FaUserAlt className="icon-currentuser" />
+                      )}
+                    </Link>
+                  </div>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                    to={"/profile"}
+                  >
+                    <span className="current-user-info">{`${currentUser.name} ${currentUser.surname}`}</span>
+                  </NavLink>
+                  <button className="nav-link" onClick={handleLogout}>
+                    <TbLogout2 className="icon-logout" />
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <NavLink className="nav-link" to="/login">
+                  <FaUser className="icon-user" />
+                  Login
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

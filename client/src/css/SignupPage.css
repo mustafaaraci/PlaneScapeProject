@@ -1,0 +1,115 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  max-height: 500px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(128, 0, 128, 0.5);
+}
+
+.head-signup {
+  margin-bottom: auto;
+  color: purple;
+  font-weight: bold;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.label-signup {
+  margin-bottom: 5px;
+  color: purple;
+  text-align: left;
+}
+
+.input-signup {
+  width: 100%;
+  padding: 6px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+.input-signup:focus {
+  border-color: purple;
+  outline: none;
+}
+
+.signup-button {
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #5e3c8b;
+  transition: background-color 0.5s;
+}
+
+.login-link {
+  margin-top: 10px;
+  color: #666;
+}
+
+.login-link a {
+  color: purple;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-link a:hover {
+  color: #5e3c8b;
+}
+
+.login-link-text {
+  font-weight: bold;
+}
+
+.login-link-text:hover {
+  color: #5e3c8b;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input-with-icon-signup {
+  position: relative;
+}
+
+.eye-icon-signup {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.error-message {
+  width: 340px;
+  color: red;
+  font-size: 12px;
+  margin: auto;
+  text-align: center;
+}
