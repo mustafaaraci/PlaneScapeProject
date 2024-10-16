@@ -64,6 +64,7 @@
   border: 2px solid rgba(148, 102, 148, 0.5);
   outline: none;
   height: 36px;
+  border-radius: 20px;
 }
 
 .date-inputs {
@@ -156,4 +157,8 @@
 .trip-button.one-way:not(.active) {
   background-color: transparent;
   color: purple;
+}
+
+.rounded-left {
+  border-radius: 20px;
 }

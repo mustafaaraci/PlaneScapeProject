@@ -14,7 +14,7 @@ const FlightSearch = () => {
   const [arrivalAirport, setArrivalAirport] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
-  const [tripType, setTripType] = useState("round");
+  const [tripType, setTripType] = useState("one-way");
 
   const handleFilter = () => {
     if (
@@ -32,6 +32,17 @@ const FlightSearch = () => {
 
     if (departureAirport.toLowerCase() === arrivalAirport.toLowerCase()) {
       toast.error("Gidiş ve dönüş havaalanları aynı olamaz!", {
+        autoClose: 3000,
+        pauseOnHover: false,
+      });
+      return;
+    }
+
+    if (
+      tripType === "round" &&
+      new Date(returnDate) < new Date(departureDate)
+    ) {
+      toast.error("Dönüş tarihi gidiş tarihinden önce olamaz!", {
         autoClose: 3000,
         pauseOnHover: false,
       });
@@ -120,12 +131,15 @@ const FlightSearch = () => {
           </div>
           <div className="date-inputs">
             <input
-              className="date-left"
+              className={`date-left ${
+                tripType === "one-way" ? "rounded-left" : ""
+              }`}
               type="date"
               placeholder="Gidiş Tarihi"
               value={departureDate}
               onChange={(e) => setDepartureDate(e.target.value)}
             />
+
             {tripType === "round" && (
               <input
                 className="date-right"
