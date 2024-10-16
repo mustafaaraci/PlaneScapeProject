@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, clearError } from "../redux/UserSlice";
 import Swal from "sweetalert2";
+import Spinner from "react-bootstrap/Spinner";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -92,8 +93,16 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
-          <button type="submit" className="login-button">
-            Login
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? (
+              <Spinner
+                animation="border"
+                style={{ color: "white" }}
+                size="sm"
+              />
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
         <p className="signup-link">
